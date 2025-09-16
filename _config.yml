@@ -1,5 +1,6 @@
 title: "The Art of Clara"
-baseurl: ""
+baseurl: "/siteclaraoliveira"
+url: "https://josedihego.net"
 collections:
   albums:
     output: true
