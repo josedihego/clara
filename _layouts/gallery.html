@@ -36,7 +36,7 @@ layout: default
 
   <div class="gallery">
     {% for img in subalbum.images %}
-      {% assign img_url = 'site.baseurl | append:/assets/drawings/' | append: img.file | relative_url %}
+    {% assign img_url = site.baseurl | append: '/assets/drawings/' | append: img.file %}
       <a href="{{ img_url }}" 
          data-lightbox="{{ group }}" 
          data-title="{{ img.title | escape }}">
