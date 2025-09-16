@@ -9,7 +9,7 @@ layout: default
   {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
   {% for sub in album.subalbums %}
     <li>
-      <a href="{{ site.baseurl | append:'/albums/' | append: album.name | append: '/' | append: sub.name | downcase | replace: ' ', '-' | append: '/' }}">
+    <a href="{{ site.baseurl }}/albums/{{ album.name | downcase | replace: ' ', '-' }}/{{ sub.name | downcase | replace: ' ', '-' }}/">
         {{ sub.name }}
       </a>
     </li>
