@@ -111,6 +111,8 @@ albums:
   subalbums:
   - name: Lookatme
     images:
+    - file: Faces/LookAtMe/clara_drawings_87.png
+      title: Clara Drawings 87
     - file: Faces/LookAtMe/claras_drawing12.png
       title: Claras Drawing12
     - file: Faces/LookAtMe/claras_drawing32.png
