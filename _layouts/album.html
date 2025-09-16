@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<h1>{{ page.title }}</h1>
+
+<!--<h2>Subalbums</h2>-->
+<ul>
+  {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
+  {% for sub in album.subalbums %}
+    <li>
+      <a href="{{ '/albums/' | append: album.name | append: '/' | append: sub.name | downcase | replace: ' ', '-' | append: '/' }}">
+        {{ sub.name }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

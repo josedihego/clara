@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<h1>{{ page.album }} → {{ page.subalbum }}</h1>
+
+<div class="gallery">
+  {% assign album = site.data.gallery.albums | where: "name", page.album | first %}
+  {% assign sub = album.subalbums | where: "name", page.subalbum | first %}
+
+  {% for img in sub.images %}
+    <a href="{{ '/assets/drawings/' | append: img.file | relative_url }}" 
+       data-lightbox="{{ sub.name }}" 
+       data-title="{{ img.title }}">
+      <img src="{{ '/assets/drawings/' | append: img.file | relative_url }}" 
+           alt="{{ img.title }}" 
+           loading="lazy">
+    </a>
+  {% endfor %}
+</div>
+
+<!-- Lightbox CSS & JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<!-- Gallery styling -->
+<style>
+.gallery {
+  column-count: 3;
+  column-gap: 1em;
+}
+.gallery img {
+  width: 100%;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  display:block;
+  transition: transform 0.2s ease;
+}
+.gallery img:hover {
+  transform: scale(1.03);
+}
+@media (max-width: 900px) { .gallery { column-count: 2; } }
+@media (max-width: 600px) { .gallery { column-count: 1; } }
+</style>

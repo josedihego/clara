@@ -1,0 +1,6 @@
+_site/
+*.pyc
+*.swp
+tempCodeRunnerFile.py
+.DS_Store
+.jekyll-cache
