@@ -10,7 +10,6 @@ layout: default
   <h2>Subalbums in {{ album.name }}</h2>
   <ul>
     {% for sub in album.subalbums %}
-      <li>
           {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
           <a 
             href="{{ '/albums/' 
@@ -22,8 +21,6 @@ layout: default
             {{ sub.name }}
           </a>
         {% endfor %}
-      </li>
-    {% endfor %}
   </ul>
 {% endif %}
 
