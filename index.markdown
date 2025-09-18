@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 
-<h2>Albums</h2>
+<!--<h2>Albums index.markdown</h2>-->
 <div class="album-grid">
   {% for album in site.data.gallery.albums %}
     <a href="{{ '/albums/' | append: album.name | downcase | replace: ' ', '-' | relative_url }}" class="album-card">

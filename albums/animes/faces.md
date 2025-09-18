@@ -1,5 +1,5 @@
 ---
 layout: gallery
 title: "Animes"
-subalbum: "Fromjapan"
+subalbum: "Faces"
 ---

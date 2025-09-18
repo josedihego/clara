@@ -1,5 +1,5 @@
 ---
 layout: gallery
 title: "Girls"
-subalbum: "Freegirls"
+subalbum: "Free"
 ---

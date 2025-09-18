@@ -3,14 +3,14 @@ albums:
   subalbums:
   - name: Birds
     images:
+    - file: Animals/Birds/claras_drawing00.png
+      title: Claras Drawing00
     - file: Animals/Birds/claras_drawing15.png
       title: Claras Drawing15
     - file: Animals/Birds/claras_drawing17.png
       title: Claras Drawing17
     - file: Animals/Birds/claras_drawing20.png
       title: Claras Drawing20
-    - file: Animals/Birds/claras_drawing23.png
-      title: Claras Drawing23
     - file: Animals/Birds/claras_drawing24.png
       title: Claras Drawing24
     - file: Animals/Birds/claras_drawing28.png
@@ -19,28 +19,30 @@ albums:
       title: Claras Drawing30
   - name: Dragons
     images:
-    - file: Animals/Dragons/claras_drawing79.png
-      title: Claras Drawing79
+    - file: Animals/Dragons/claras_drawing00.png
+      title: Claras Drawing00
   - name: Fish
     images:
-    - file: Animals/Fish/claras_drawing29.png
-      title: Claras Drawing29
+    - file: Animals/Fish/claras_drawing00.png
+      title: Claras Drawing00
     - file: Animals/Fish/claras_drawing76.png
       title: Claras Drawing76
   - name: Free
     images:
+    - file: Animals/Free/claras_drawing00.png
+      title: Claras Drawing00
     - file: Animals/Free/claras_drawing41.png
       title: Claras Drawing41
-    - file: Animals/Free/claras_drawing84.png
-      title: Claras Drawing84
   - name: Insects
     images:
+    - file: Animals/Insects/claras_drawing00.png
+      title: Claras Drawing00
     - file: Animals/Insects/claras_drawing33.png
       title: Claras Drawing33
-    - file: Animals/Insects/claras_drawing80.png
-      title: Claras Drawing80
   - name: Mammals
     images:
+    - file: Animals/Mammals/claras_drawing00.png
+      title: Claras Drawing00
     - file: Animals/Mammals/claras_drawing10.png
       title: Claras Drawing10
     - file: Animals/Mammals/claras_drawing18.png
@@ -63,69 +65,67 @@ albums:
       title: Claras Drawing72
     - file: Animals/Mammals/claras_drawing77.png
       title: Claras Drawing77
-    - file: Animals/Mammals/claras_drawing78.png
-      title: Claras Drawing78
     - file: Animals/Mammals/claras_drawing9.png
       title: Claras Drawing9
   - name: Mythical
     images:
-    - file: Animals/Mythical/claras_drawing27.png
-      title: Claras Drawing27
+    - file: Animals/Mythical/claras_drawing00.png
+      title: Claras Drawing00
     - file: Animals/Mythical/claras_drawing82.png
       title: Claras Drawing82
   - name: Reptiles
     images:
-    - file: Animals/Reptiles/claras_drawing1.png
-      title: Claras Drawing1
+    - file: Animals/Reptiles/claras_drawing00.png
+      title: Claras Drawing00
     - file: Animals/Reptiles/claras_drawing6.png
       title: Claras Drawing6
 - name: Animes
   subalbums:
-  - name: Fromjapan
+  - name: Faces
     images:
-    - file: Animes/FromJapan/claras_drawing11.png
+    - file: Animes/Faces/claras_drawing00.png
+      title: Claras Drawing00
+    - file: Animes/Faces/claras_drawing11.png
       title: Claras Drawing11
-    - file: Animes/FromJapan/claras_drawing14.png
+    - file: Animes/Faces/claras_drawing14.png
       title: Claras Drawing14
-    - file: Animes/FromJapan/claras_drawing19.png
+    - file: Animes/Faces/claras_drawing19.png
       title: Claras Drawing19
-    - file: Animes/FromJapan/claras_drawing26.png
+    - file: Animes/Faces/claras_drawing26.png
       title: Claras Drawing26
-    - file: Animes/FromJapan/claras_drawing46.png
+    - file: Animes/Faces/claras_drawing46.png
       title: Claras Drawing46
-    - file: Animes/FromJapan/claras_drawing54.png
+    - file: Animes/Faces/claras_drawing54.png
       title: Claras Drawing54
-    - file: Animes/FromJapan/claras_drawing70.png
-      title: Claras Drawing70
-    - file: Animes/FromJapan/claras_drawing8.png
+    - file: Animes/Faces/claras_drawing8.png
       title: Claras Drawing8
 - name: Eyes
   subalbums:
-  - name: Donotlookaway
+  - name: Look
     images:
-    - file: Eyes/DoNotLookAway/claras_drawing66.png
+    - file: Eyes/Look/claras_drawing00.png
+      title: Claras Drawing00
+    - file: Eyes/Look/claras_drawing66.png
       title: Claras Drawing66
-    - file: Eyes/DoNotLookAway/claras_drawing68.png
-      title: Claras Drawing68
 - name: Faces
   subalbums:
-  - name: Lookatme
+  - name: See
     images:
-    - file: Faces/LookAtMe/clara_drawings_87.png
-      title: Clara Drawings 87
-    - file: Faces/LookAtMe/claras_drawing12.png
+    - file: Faces/See/clara_drawings_00.png
+      title: Clara Drawings 00
+    - file: Faces/See/claras_drawing12.png
       title: Claras Drawing12
-    - file: Faces/LookAtMe/claras_drawing32.png
+    - file: Faces/See/claras_drawing32.png
       title: Claras Drawing32
-    - file: Faces/LookAtMe/claras_drawing40.png
+    - file: Faces/See/claras_drawing40.png
       title: Claras Drawing40
-    - file: Faces/LookAtMe/claras_drawing48.png
+    - file: Faces/See/claras_drawing48.png
       title: Claras Drawing48
-    - file: Faces/LookAtMe/claras_drawing51.png
+    - file: Faces/See/claras_drawing51.png
       title: Claras Drawing51
-    - file: Faces/LookAtMe/claras_drawing74.png
+    - file: Faces/See/claras_drawing74.png
       title: Claras Drawing74
-    - file: Faces/LookAtMe/claras_drawing86.png
+    - file: Faces/See/claras_drawing86.png
       title: Claras Drawing86
 - name: Fun
   subalbums:
@@ -135,73 +135,73 @@ albums:
       title: Claras Drawing83
 - name: Girls
   subalbums:
-  - name: Freegirls
+  - name: Free
     images:
-    - file: Girls/FreeGirls/claras_drawing13.png
+    - file: Girls/Free/claras_drawing13.png
       title: Claras Drawing13
-    - file: Girls/FreeGirls/claras_drawing16.png
+    - file: Girls/Free/claras_drawing16.png
       title: Claras Drawing16
-    - file: Girls/FreeGirls/claras_drawing25.png
+    - file: Girls/Free/claras_drawing25.png
       title: Claras Drawing25
-    - file: Girls/FreeGirls/claras_drawing31.png
+    - file: Girls/Free/claras_drawing31.png
       title: Claras Drawing31
-    - file: Girls/FreeGirls/claras_drawing34.png
+    - file: Girls/Free/claras_drawing34.png
       title: Claras Drawing34
-    - file: Girls/FreeGirls/claras_drawing35.png
+    - file: Girls/Free/claras_drawing35.png
       title: Claras Drawing35
-    - file: Girls/FreeGirls/claras_drawing37.png
+    - file: Girls/Free/claras_drawing37.png
       title: Claras Drawing37
-    - file: Girls/FreeGirls/claras_drawing38.png
+    - file: Girls/Free/claras_drawing38.png
       title: Claras Drawing38
-    - file: Girls/FreeGirls/claras_drawing39.png
+    - file: Girls/Free/claras_drawing39.png
       title: Claras Drawing39
-    - file: Girls/FreeGirls/claras_drawing42.png
+    - file: Girls/Free/claras_drawing42.png
       title: Claras Drawing42
-    - file: Girls/FreeGirls/claras_drawing43.png
+    - file: Girls/Free/claras_drawing43.png
       title: Claras Drawing43
-    - file: Girls/FreeGirls/claras_drawing44.png
+    - file: Girls/Free/claras_drawing44.png
       title: Claras Drawing44
-    - file: Girls/FreeGirls/claras_drawing45.png
+    - file: Girls/Free/claras_drawing45.png
       title: Claras Drawing45
-    - file: Girls/FreeGirls/claras_drawing47.png
+    - file: Girls/Free/claras_drawing47.png
       title: Claras Drawing47
-    - file: Girls/FreeGirls/claras_drawing49.png
+    - file: Girls/Free/claras_drawing49.png
       title: Claras Drawing49
-    - file: Girls/FreeGirls/claras_drawing5.png
+    - file: Girls/Free/claras_drawing5.png
       title: Claras Drawing5
-    - file: Girls/FreeGirls/claras_drawing50.png
+    - file: Girls/Free/claras_drawing50.png
       title: Claras Drawing50
-    - file: Girls/FreeGirls/claras_drawing52.png
+    - file: Girls/Free/claras_drawing52.png
       title: Claras Drawing52
-    - file: Girls/FreeGirls/claras_drawing53.png
+    - file: Girls/Free/claras_drawing53.png
       title: Claras Drawing53
-    - file: Girls/FreeGirls/claras_drawing55.png
+    - file: Girls/Free/claras_drawing55.png
       title: Claras Drawing55
-    - file: Girls/FreeGirls/claras_drawing56.png
+    - file: Girls/Free/claras_drawing56.png
       title: Claras Drawing56
-    - file: Girls/FreeGirls/claras_drawing57.png
+    - file: Girls/Free/claras_drawing57.png
       title: Claras Drawing57
-    - file: Girls/FreeGirls/claras_drawing58.png
+    - file: Girls/Free/claras_drawing58.png
       title: Claras Drawing58
-    - file: Girls/FreeGirls/claras_drawing59.png
+    - file: Girls/Free/claras_drawing59.png
       title: Claras Drawing59
-    - file: Girls/FreeGirls/claras_drawing60.png
+    - file: Girls/Free/claras_drawing60.png
       title: Claras Drawing60
-    - file: Girls/FreeGirls/claras_drawing61.png
+    - file: Girls/Free/claras_drawing61.png
       title: Claras Drawing61
-    - file: Girls/FreeGirls/claras_drawing62.png
+    - file: Girls/Free/claras_drawing62.png
       title: Claras Drawing62
-    - file: Girls/FreeGirls/claras_drawing63.png
+    - file: Girls/Free/claras_drawing63.png
       title: Claras Drawing63
-    - file: Girls/FreeGirls/claras_drawing64.png
+    - file: Girls/Free/claras_drawing64.png
       title: Claras Drawing64
-    - file: Girls/FreeGirls/claras_drawing67.png
+    - file: Girls/Free/claras_drawing67.png
       title: Claras Drawing67
-    - file: Girls/FreeGirls/claras_drawing73.png
+    - file: Girls/Free/claras_drawing73.png
       title: Claras Drawing73
-    - file: Girls/FreeGirls/claras_drawing81.png
+    - file: Girls/Free/claras_drawing81.png
       title: Claras Drawing81
-    - file: Girls/FreeGirls/claras_drawing85.png
+    - file: Girls/Free/claras_drawing85.png
       title: Claras Drawing85
 - name: Landscapes
   subalbums:

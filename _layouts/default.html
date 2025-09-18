@@ -1,169 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- jQuery (must come before Lightbox2) -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Lightbox2 CSS + JS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <!-- Lightbox2 CSS + JS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
   <style>
-  body {
-    font-family: system-ui, sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #fafafa;
-    color: #333;
-  }
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fafafa;
+      color: #333;
+    }
 
-  header {
-    background: #222;
-    color: white;
-    padding: 1rem;
-  }
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem;
+    }
 
-  header h1 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
+    header h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
 
-  header h1 a {
-    color: white;
-    text-decoration: none;
-  }
+    header h1 a {
+      color: white;
+      text-decoration: none;
+    }
 
-  nav {
-    margin-top: 0.5rem;
-  }
+    nav {
+      margin-top: 0.5rem;
+    }
 
-  nav a {
-    color: #ddd;
-    text-decoration: none;
-    margin-right: 1rem;
-  }
+    nav a {
+      color: #ddd;
+      text-decoration: none;
+      margin-right: 1rem;
+    }
 
-  nav a:hover {
-    color: white;
-  }
+    nav a:hover {
+      color: white;
+    }
 
-  main {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
 
-  h2 {
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
+    h2 {
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
 
-  /* Gallery grid */
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-  }
+    /* Gallery grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
 
-  .gallery img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-  }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
 
-  .gallery img:hover {
-    transform: scale(1.03);
-  }
-  .album-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
-}
-.album-card {
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  text-decoration: none;
-  color: inherit;
-  overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.album-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-}
-.album-card img {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-}
-.album-card h3 {
-  margin: 0;
-  padding: 0.75rem;
-  text-align: center;
-}
-.lb-data .lb-caption {
-  font-size: 0.9rem;
-  color: #f5f5f5;
-  background: rgba(0,0,0,0.6);
-  padding: 0.5rem;
-  border-radius: 4px;
-}
-/* Dropdown navigation */
-nav {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-.dropdown > a {
-  color: #ddd;
-  text-decoration: none;
-  padding: 0.5rem 0.75rem;
-  display: inline-block;
-}
-.dropdown > a:hover {
-  color: white;
-}
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #333;
-  border-radius: 4px;
-  min-width: 160px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 10;
-}
-.dropdown-content a {
-  display: block;
-  padding: 0.5rem 1rem;
-  color: #ddd;
-  text-decoration: none;
-}
-.dropdown-content a:hover {
-  background: #444;
-  color: white;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
+    .gallery img:hover {
+      transform: scale(1.03);
+    }
 
-nav a.active {
-  font-weight: bold;
-  color: white !important;
-  border-bottom: 2px solid white;
-}
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
 
-</style>
+    .album-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      text-decoration: none;
+      color: inherit;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .album-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    .album-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .album-card h3 {
+      margin: 0;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    .lb-data .lb-caption {
+      font-size: 0.9rem;
+      color: #f5f5f5;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Dropdown navigation */
+    nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown>a {
+      color: #ddd;
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      display: inline-block;
+    }
+
+    .dropdown>a:hover {
+      color: white;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #333;
+      border-radius: 4px;
+      min-width: 160px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #ddd;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background: #444;
+      color: white;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    nav a.active {
+      font-weight: bold;
+      color: white !important;
+      border-bottom: 2px solid white;
+    }
+  </style>
 
 
   <meta charset="UTF-8">
-  <title>{{ page.title }}</title>
+  <title>{{ page.title }} default.html</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css">
@@ -172,39 +186,36 @@ nav a.active {
 <body>
   <header>
     <h1><a href="{{ '/' | relative_url }}">The Clara's Art Exposition</a></h1>
-  <nav>
-  {% assign current = page.url %}
-  {% for album in site.data.gallery.albums %}
-    {% assign album_slug = album.name | downcase | replace: ' ', '-' %}
-    <div class="dropdown">
-      <a 
-        href="{{ '/albums/' | append: album_slug | relative_url }}"
-        class="{% if current contains album_slug %}active{% endif %}">
-        {{ album.name }}
-      </a>
-      <div class="dropdown-content">
-        {% for sub in album.subalbums %}
+    <nav>
+      {% assign current = page.url %}
+      {% for album in site.data.gallery.albums %}
+      {% assign album_slug = album.name | downcase | replace: ' ', '-' %}
+      <div class="dropdown">
+        <a href="{{ '/albums/' | append: album_slug | relative_url }}"
+          class="{% if current contains album_slug %}active{% endif %}">
+          {{ album.name }}
+        </a>
+        <div class="dropdown-content">
+          {% for sub in album.subalbums %}
           {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
-          <a 
-            href="{{ '/albums/' 
+          <a href="{{ '/albums/' 
               | append: album_slug 
               | append: '/' 
               | append: sub_slug 
-              | relative_url }}"
-            class="{% if current contains sub_slug %}active{% endif %}">
+              | relative_url }}" class="{% if current contains sub_slug %}active{% endif %}">
             {{ sub.name }}
           </a>
-        {% endfor %}
+          {% endfor %}
+        </div>
       </div>
-    </div>
-  {% endfor %}
-</nav>
+      {% endfor %}
+    </nav>
 
 
     <hr>
     {% if content_for_head %}
-  {{ content_for_head }}
-{% endif %}
+    {{ content_for_head }}
+    {% endif %}
 
   </header>
 
@@ -212,7 +223,8 @@ nav a.active {
     {{ content }}
   </main>
   <footer class="site-footer" style="text-align:center; padding: 1px; background:#f0f0f0;">
-  <p>&copy; {{ "now" | date: "%Y" }} Clara Souza Oliveira. All rights reserved.</p>
-</footer>
+    <p>&copy; {{ "now" | date: "%Y" }} Clara Souza Oliveira. All rights reserved.</p>
+  </footer>
 </body>
+
 </html>

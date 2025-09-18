@@ -1,5 +1,5 @@
 ---
 layout: gallery
 title: "Faces"
-subalbum: "Lookatme"
+subalbum: "See"
 ---

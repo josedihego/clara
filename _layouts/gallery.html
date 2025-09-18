@@ -2,95 +2,105 @@
 layout: default
 ---
 
-<h1>{{ page.title }}</h1>
+<h1>{{ page.title }} gallery.html</h1>
 
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
 
 {% if album %}
-  <h2>Subalbums in {{ album.name }}</h2>
-  <ul>
-    {% for sub in album.subalbums %}
-          {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
-          {% assign sub_album = album.name | downcase | replace: ' ', '-' %}
-          <li>
-          <a 
-            href="{{ '/albums/' 
+<h2>Subalbums in {{ album.name }}</h2>
+<ul>
+  {% for sub in album.subalbums %}
+  {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
+  {% assign sub_album = album.name | downcase | replace: ' ', '-' %}
+  <li>
+    <a href="{{ '/albums/' 
                | append: sub_album
                | append: '/' 
               | append: sub_slug 
-              | relative_url }}"
-            class="{% if current contains sub_slug %}active{% endif %}">
-            {{ sub.name }}
-          </a>
-          </li>
-        {% endfor %}
-  </ul>
+              | relative_url }}" class="{% if current contains sub_slug %}active{% endif %}">
+      {{ sub.name }}
+    </a>
+  </li>
+  {% endfor %}
+</ul>
 {% endif %}
 
 {% assign subalbum = nil %}
 {% if page.subalbum %}
-  {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
-  {% assign subalbum = album.subalbums | where: "name", page.subalbum | first %}
+{% assign album = site.data.gallery.albums | where: "name", page.title | first %}
+{% assign subalbum = album.subalbums | where: "name", page.subalbum | first %}
 {% endif %}
 
 {% if subalbum %}
-  {% comment %}
-    Build a safe group name for data-lightbox using slugify.
-    (Jekyll provides slugify filter.)
-  {% endcomment %}
-  {% assign group = album.name | slugify | append: '-' | append: subalbum.name | slugify %}
+{% comment %}
+Build a safe group name for data-lightbox using slugify.
+(Jekyll provides slugify filter.)
+{% endcomment %}
+{% assign group = album.name | slugify | append: '-' | append: subalbum.name | slugify %}
 
-  <h2>{{ subalbum.name }}</h2>
+<h2>{{ subalbum.name }}</h2>
 
-  <div class="gallery">
-    {% for img in subalbum.images %}
-      {% assign img_url = '/assets/drawings/' | append: img.file | relative_url %}
-      <a href="{{ img_url }}" 
-         data-lightbox="{{ group }}" 
-         data-title="{{ img.title | escape }}">
-        <img src="{{ img_url }}" alt="{{ img.title | escape }}" loading="lazy">
-      </a>
-    {% endfor %}
-  </div>
+<div class="gallery">
+  {% for img in subalbum.images %}
+  {% assign img_url = '/assets/drawings/' | append: img.file | relative_url %}
+  <a href="{{ img_url }}" data-lightbox="{{ group }}" data-title="{{ img.title | escape }}">
+    <img src="{{ img_url }}" alt="{{ img.title | escape }}" loading="lazy">
+  </a>
+  {% endfor %}
+</div>
 
-  <!-- load jQuery first (needed by Lightbox2) -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- load jQuery first (needed by Lightbox2) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <!-- Lightbox2 CSS + JS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<!-- Lightbox2 CSS + JS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
-  <script>
-    // safe config (only if lightbox exists)
-    if (typeof lightbox !== 'undefined') {
-      lightbox.option({
-        'resizeDuration': 200,
-        'wrapAround': true,
-        'fadeDuration': 200,
-        'imageFadeDuration': 200,
-        'albumLabel': "Image %1 of %2"
-      });
-    } else {
-      console.warn('Lightbox not loaded — check console/network.');
-    }
-  </script>
+<script>
+  // safe config (only if lightbox exists)
+  if (typeof lightbox !== 'undefined') {
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'fadeDuration': 200,
+      'imageFadeDuration': 200,
+      'albumLabel': "Image %1 of %2"
+    });
+  } else {
+    console.warn('Lightbox not loaded — check console/network.');
+  }
+</script>
 
 {% endif %}
 
 <style>
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-}
-.gallery img {
-  width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  display:block;
-  transition: transform .12s ease;
-}
-.gallery img:hover { transform: translateY(-4px); }
-@media (max-width:900px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width:600px) { .gallery { grid-template-columns: 1fr; } }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .gallery img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    display: block;
+    transition: transform .12s ease;
+  }
+
+  .gallery img:hover {
+    transform: translateY(-4px);
+  }
+
+  @media (max-width:900px) {
+    .gallery {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width:600px) {
+    .gallery {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
