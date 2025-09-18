@@ -11,7 +11,7 @@ layout: default
   <ul>
     {% for sub in album.subalbums %}
       <li>
-        <a href="{{ '/' | append: album.name | append: '/' | append: sub.name | downcase | replace: ' ', '-' | append: '/' }}">
+        <a href="{{ '/'| append: albums  '/' | append: album.name | append: '/' | append: sub.name | downcase | replace: ' ', '-' | append: '/' }}">
           {{ sub.name }}
         </a>
       </li>
