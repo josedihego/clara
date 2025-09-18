@@ -24,11 +24,8 @@ layout: default
 {% endif %}
 -->
 
-{% assign subalbum = nil %}
-{% if page.subalbum %}
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
 {% assign subalbum = album.subalbums | where: "name", page.subalbum | first %}
-{% endif %}
 
 {% if subalbum %}
 {% comment %}
