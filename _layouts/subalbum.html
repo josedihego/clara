@@ -9,13 +9,13 @@ layout: default
   {% assign sub = album.subalbums | where: "name", page.subalbum | first %}
 
   {% for img in sub.images %}
-    <a href="{{ '/assets/drawings/' | append: img.file | relative_url }}" 
-       data-lightbox="{{ sub.name }}" 
-       data-title="{{ img.title }}">
-      <img src="{{ '/assets/drawings/' | append: img.file | relative_url }}" 
-           alt="{{ img.title }}" 
-           loading="lazy">
-    </a>
+    <a href="{{ site.baseurl }}/assets/drawings/{{ img.file }}" 
+   data-lightbox="{{ sub.name }}" 
+   data-title="{{ img.title }}">
+  <img src="{{ site.baseurl }}/assets/drawings/{{ img.file }}" 
+       alt="{{ img.title }}" 
+       loading="lazy">
+</a>
   {% endfor %}
 </div>
 
