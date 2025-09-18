@@ -12,14 +12,17 @@ layout: default
     {% for sub in album.subalbums %}
           {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
           {% assign sub_album = album.name | downcase | replace: ' ', '-' %}
+          <li>
           <a 
             href="{{ '/albums/' 
-               | append: sub_album 
+               | append: sub_album
+               | append: '/' 
               | append: sub_slug 
               | relative_url }}"
             class="{% if current contains sub_slug %}active{% endif %}">
             {{ sub.name }}
           </a>
+          </li>
         {% endfor %}
   </ul>
 {% endif %}
