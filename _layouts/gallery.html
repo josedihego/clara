@@ -3,7 +3,7 @@ layout: default
 ---
 
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
-<!--
+
 {% if album %}
 <h2>Subalbums in {{ album.name }}</h2>
 <ul>
@@ -22,16 +22,13 @@ layout: default
   {% endfor %}
 </ul>
 {% endif %}
--->
+
 
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
 {% assign subalbum = album.subalbums | where: "name", page.subalbum | first %}
 
 {% if subalbum %}
-{% comment %}
-Build a safe group name for data-lightbox using slugify.
-(Jekyll provides slugify filter.)
-{% endcomment %}
+
 {% assign group = album.name | slugify | append: '-' | append: subalbum.name | slugify %}
 
 <h2>{{ subalbum.name }}</h2>
