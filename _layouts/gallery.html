@@ -2,10 +2,8 @@
 layout: default
 ---
 
-<h1>{{ page.title }} gallery.html</h1>
-
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
-
+<!--
 {% if album %}
 <h2>Subalbums in {{ album.name }}</h2>
 <ul>
@@ -24,6 +22,7 @@ layout: default
   {% endfor %}
 </ul>
 {% endif %}
+-->
 
 {% assign subalbum = nil %}
 {% if page.subalbum %}
