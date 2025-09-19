@@ -10,29 +10,17 @@ layout: default
   {% for sub in album.subalbums %}
   {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
   {% assign sub_album = album.name | downcase | replace: ' ', '-' %}
-
-  <div class="album-grid">
-  {% for album in site.data.gallery.albums %}
-    <a href="{{ '/albums/' | append: album.name | downcase | replace: ' ', '-' | relative_url }}" class="album-card">
-      <img src="{{ '/assets/drawings/' | append: album.subalbums[0].images[0].file | relative_url }}" alt="{{ album.name }}">
-      <h3>{{ album.name }}</h3>
-    </a>
-  {% endfor %}
-  </div>
-
   <li>
     <a href="{{ '/albums/' 
                | append: sub_album
                | append: '/' 
               | append: sub_slug 
               | relative_url }}" class="album-card">
-               <img src="{{ '/albums/' 
+              <img src="{{ '/albums/' 
                | append: sub_album
                | append: '/' 
               | append: sub_slug 
               | relative_url }}" alt="{{ sub.name }}">
-      <h3>{{ sub.name }}</h3>
-      {{ sub.name }}
     </a>
   </li>
   {% endfor %}
