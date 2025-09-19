@@ -173,6 +173,71 @@
       color: white !important;
       border-bottom: 2px solid white;
     }
+
+    .share-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.share-btn img {
+  width: 20px;
+  height: 20px;
+}
+
+.share-btn.whatsapp {
+  background: #25D366;
+  color: white;
+}
+.share-btn.whatsapp:hover {
+  background: #1DA851;
+}
+
+.share-btn.instagram {
+  background: #E1306C;
+  color: white;
+}
+.share-btn.instagram:hover {
+  background: #C13584;
+}
+
+.image-card {
+  position: relative;
+  display: inline-block;
+}
+.image-card img {
+  display: block;
+}
+.image-card .share-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: #25D366;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-card .share-btn img {
+  width: 18px;
+  height: 18px;
+  filter: invert(1);
+}
+
+
   </style>
 
 
@@ -221,6 +286,15 @@
 
   <main>
     {{ content }}
+    <div class="share-buttons">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/?text={{ page.url | absolute_url | uri_escape }}" 
+     target="_blank" class="share-btn whatsapp">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="Share on WhatsApp">
+    Share on WhatsApp
+  </a>
+</div>
+
   </main>
   <footer class="site-footer" style="text-align:center; padding: 1px; background:#f0f0f0;">
     <p>&copy; {{ "now" | date: "%Y" }} Clara Souza Oliveira. All rights reserved.</p>

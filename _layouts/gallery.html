@@ -5,7 +5,6 @@ layout: default
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
 
 {% if album and page.subalbum == nil %}
-<!-- <h2>Subalbums in {{ album.name }}</h2>-->
 <div class="gallery">
   {% for sub in album.subalbums %}
   {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
@@ -25,9 +24,9 @@ layout: default
 </div>
 {% endif %}
 
-{% assign subalbum = album.subalbums | where: "name", page.subalbum | first %}
 
 {% if album and page.subalbum %}
+{% assign subalbum = album.subalbums | where: "name", page.subalbum | first %}
 
 {% assign group = album.name | slugify | append: '-' | append: subalbum.name | slugify %}
 
@@ -43,6 +42,7 @@ layout: default
 </div>
 
 {% endif %}
+
 
 <!-- load jQuery first (needed by Lightbox2) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
