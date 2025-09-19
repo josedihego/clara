@@ -10,7 +10,7 @@ layout: default
   {% for sub in album.subalbums %}
   {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
   {% assign sub_album = album.name | downcase | replace: ' ', '-' %}
-  {% assign img_url = '/assets/drawings/' | append: subalbum.images[0].file | relative_url %}
+  {% assign img_url = '/assets/drawings/' | append: sub.images[0].file | relative_url %}
   <li>
     <a href="{{ '/albums/' 
                | append: sub_album
