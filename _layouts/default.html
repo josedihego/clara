@@ -249,6 +249,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
 
 
+// Replace your existing share button script with this enhanced version
 <script>
 (function () {
   // create button only once and attach handler that reads current .lb-image.src when clicked
@@ -257,64 +258,188 @@
     var lbClose = document.querySelector('.lb-close');
     if (!lbClose) return false;
 
+    console.log('Creating share button...'); // Debug log
+
     var shareBtn = document.createElement('a');
     shareBtn.href = '#';
     shareBtn.className = 'lb-share';
     shareBtn.title = 'Share this image';
-   shareBtn.innerHTML = `
-  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
-    <polyline points="16,6 12,2 8,6"/>
-    <line x1="12" y1="2" x2="12" y2="15"/>
-  </svg>`; // simple icon — replace with SVG if you prefer
+    shareBtn.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+        <polyline points="16,6 12,2 8,6"/>
+        <line x1="12" y1="2" x2="12" y2="15"/>
+      </svg>
+    `;
 
-    shareBtn.addEventListener('click', function (e) {
+    // Enhanced click handler for mobile
+    function handleShare(e) {
       e.preventDefault();
+      e.stopPropagation();
+      
+      console.log('Share button clicked'); // Debug log
+      
       var img = document.querySelector('.lb-image');
-      if (!img) return alert('Image not ready yet');
+      if (!img) {
+        console.log('Image not ready yet');
+        return;
+      }
+      
       var imgUrl = img.src;
       var imgAlt = img.getAttribute('alt') || document.title;
+      var pageUrl = window.location.href; // Share page URL instead of direct image
+      
+      console.log('Sharing:', pageUrl); // Debug log
 
-      if (navigator.share) {
+      // Check if mobile device and native sharing is available
+      var isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      
+      if (navigator.share && isMobile) {
         navigator.share({
           title: imgAlt,
-          text: imgAlt,
-          url: imgUrl
-        }).catch(function(){ /* share cancelled */ });
+          text: 'Check out this artwork by Clara Oliveira!',
+          url: pageUrl
+        }).then(() => {
+          console.log('Share successful');
+        }).catch((error) => {
+          console.log('Share failed:', error);
+          // Fallback if share is cancelled
+          fallbackShare(pageUrl, imgAlt);
+        });
       } else {
-        // fallback to WhatsApp Web on desktop
-        window.open('https://wa.me/?text=' + encodeURIComponent(imgAlt + ' ' + imgUrl), '_blank');
+        fallbackShare(pageUrl, imgAlt);
       }
-    });
+    }
+
+    function fallbackShare(url, title) {
+      var shareText = title + ' - ' + url;
+      
+      // Try clipboard first on modern browsers
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(shareText).then(() => {
+          showToast('Link copied to clipboard!');
+        }).catch(() => {
+          // Fallback to WhatsApp
+          window.open('https://wa.me/?text=' + encodeURIComponent(shareText), '_blank');
+        });
+      } else {
+        // Direct WhatsApp fallback
+        window.open('https://wa.me/?text=' + encodeURIComponent(shareText), '_blank');
+      }
+    }
+
+    function showToast(message) {
+      var toast = document.createElement('div');
+      toast.textContent = message;
+      toast.style.cssText = `
+        position: fixed;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0,0,0,0.8);
+        color: white;
+        padding: 12px 24px;
+        border-radius: 25px;
+        z-index: 10002;
+        font-size: 14px;
+        font-family: system-ui, sans-serif;
+      `;
+      document.body.appendChild(toast);
+      
+      setTimeout(function() {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 3000);
+    }
+
+    // Add multiple event listeners for better mobile support
+    shareBtn.addEventListener('click', handleShare, true);
+    shareBtn.addEventListener('touchstart', function(e) {
+      e.stopPropagation();
+    }, true);
+    shareBtn.addEventListener('touchend', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      handleShare(e);
+    }, true);
 
     // insert before the close button (so it appears left of the X)
     lbClose.parentNode.insertBefore(shareBtn, lbClose);
+    console.log('Share button created and added'); // Debug log
     return true;
   }
 
-  // When a lightbox link is clicked, poll a bit for Lightbox DOM and insert button
+  // Enhanced click detection for mobile
   document.addEventListener('click', function (e) {
     var target = e.target.closest('a[data-lightbox]');
     if (!target) return;
 
+    console.log('Lightbox link clicked'); // Debug log
+
     // remove any existing share button (we'll recreate for new overlay)
+    var old = document.querySelector('.lb-share');
+    if (old) {
+      old.remove();
+      console.log('Removed old share button'); // Debug log
+    }
+
+    var attempts = 0;
+    var maxAttempts = 50; // Increased for slower mobile devices
+    var iv = setInterval(function () {
+      if (createShareButtonIfNeeded() || attempts++ > maxAttempts) {
+        clearInterval(iv);
+        if (attempts > maxAttempts) {
+          console.log('Failed to create share button after', maxAttempts, 'attempts');
+        }
+      }
+    }, 100);
+  }, true);
+
+  // Add touch event listener for mobile
+  document.addEventListener('touchend', function (e) {
+    var target = e.target.closest('a[data-lightbox]');
+    if (!target) return;
+
+    console.log('Lightbox link touched'); // Debug log
+
+    // Same logic as click
     var old = document.querySelector('.lb-share');
     if (old) old.remove();
 
     var attempts = 0;
     var iv = setInterval(function () {
-      if (createShareButtonIfNeeded() || attempts++ > 30) {
+      if (createShareButtonIfNeeded() || attempts++ > 50) {
         clearInterval(iv);
       }
     }, 100);
   }, true);
 
-  // also watch for DOM changes (covers next/prev navigation inside Lightbox)
-  var mo = new MutationObserver(function () {
-    // try to insert if not present
-    createShareButtonIfNeeded();
+  // Enhanced mutation observer for mobile
+  var mo = new MutationObserver(function (mutations) {
+    var shouldCreateButton = false;
+    
+    mutations.forEach(function(mutation) {
+      if (mutation.type === 'childList') {
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1 && (
+            node.classList && node.classList.contains('lb-close') ||
+            node.querySelector && node.querySelector('.lb-close')
+          )) {
+            shouldCreateButton = true;
+          }
+        });
+      }
+    });
+    
+    if (shouldCreateButton) {
+      setTimeout(createShareButtonIfNeeded, 50);
+    }
   });
+  
   mo.observe(document.body, { childList: true, subtree: true });
+
+  console.log('Enhanced share button script loaded'); // Debug log
 })();
 </script>
 
