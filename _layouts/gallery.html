@@ -16,8 +16,8 @@ layout: default
                | append: sub_album
                | append: '/' 
               | append: sub_slug 
-              | relative_url }}" data-lightbox="{{ group }}" class="album-card">
-    <img img src="{{ img_url }}" alt="{{ sub.images[0].title | escape }}" loading="lazy">
+              | relative_url }}" data-lightbox="{{ group }}" class="album-card" data-title="{{ sub.name | escape }}">
+    <img img src="{{ img_url }}" alt="{{ album.name | escape }}" loading="lazy">
   </a>
 
   {% endfor %}
