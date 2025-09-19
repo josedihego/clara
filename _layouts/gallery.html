@@ -25,7 +25,13 @@ layout: default
                | append: sub_album
                | append: '/' 
               | append: sub_slug 
-              | relative_url }}" class="{% if current contains sub_slug %}active{% endif %}">
+              | relative_url }}" class="album-card">
+               <img src="{{ '/albums/' 
+               | append: sub_album
+               | append: '/' 
+              | append: sub_slug 
+              | relative_url }}" alt="{{ sub.name }}">
+      <h3>{{ sub.name }}</h3>
       {{ sub.name }}
     </a>
   </li>
