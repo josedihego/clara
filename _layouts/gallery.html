@@ -5,7 +5,7 @@ layout: default
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
 
 {% if album %}
-<h2>Subalbums in {{ album.name }}</h2>
+<!-- <h2>Subalbums in {{ album.name }}</h2>-->
 <div class="gallery">
   {% for sub in album.subalbums %}
   {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
@@ -18,13 +18,12 @@ layout: default
               | append: sub_slug 
               | relative_url }}" data-lightbox="{{ group }}" class="album-card" data-title="{{ sub.name | escape }}">
     <img img src="{{ img_url }}" alt="{{ album.name | escape }}" loading="lazy">
-    <h3>"{{ sub.name | escape }}"</h3>
+    <h3>{{ sub.name | escape }}</h3>
   </a>
 
   {% endfor %}
-  {% endif %}
 </div>
-
+{% endif %}
 
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
 {% assign subalbum = album.subalbums | where: "name", page.subalbum | first %}
@@ -33,7 +32,7 @@ layout: default
 
 {% assign group = album.name | slugify | append: '-' | append: subalbum.name | slugify %}
 
-<
+
 <h2>{{ subalbum.name }}</h2>
 
 <div class="gallery">
@@ -44,6 +43,8 @@ layout: default
   </a>
   {% endfor %}
 </div>
+
+{% endif %}
 
 <!-- load jQuery first (needed by Lightbox2) -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -67,7 +68,7 @@ layout: default
   }
 </script>
 
-{% endif %}
+
 
 <style>
   .gallery {
