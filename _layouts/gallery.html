@@ -103,6 +103,78 @@ layout: default
   transform: scale(1.05); /* subtle hover effect */
 }
 
+/* Mobile-specific fixes for share button */
+@media (max-width: 768px) {
+  .lb-share {
+    position: absolute !important;
+    top: 15px !important;
+    right: 50px !important; /* More space from edge */
+    font-size: 18px !important;
+    padding: 10px !important;
+    min-width: 44px !important; /* Minimum touch target size */
+    min-height: 44px !important;
+    background: rgba(0,0,0,0.8) !important; /* More opaque for visibility */
+    border: 2px solid rgba(255,255,255,0.3) !important; /* Add border for better visibility */
+    z-index: 10001 !important; /* Higher than lightbox */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    touch-action: manipulation !important; /* Prevent double-tap zoom */
+    -webkit-tap-highlight-color: transparent !important; /* Remove blue highlight */
+  }
+
+  .lb-share:hover,
+  .lb-share:active {
+    background: rgba(0,0,0,0.9) !important;
+    transform: scale(1.1) !important;
+  }
+
+  /* Make sure the SVG is properly sized on mobile */
+  .lb-share svg {
+    width: 18px !important;
+    height: 18px !important;
+    pointer-events: none !important; /* Prevent SVG from blocking clicks */
+  }
+
+  /* Ensure lightbox container doesn't interfere */
+  .lightbox .lb-container {
+    position: relative !important;
+  }
+
+  /* Make sure close button doesn't overlap */
+  .lb-close {
+    right: 10px !important;
+    top: 15px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    z-index: 10000 !important;
+  }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+  .lb-share {
+    top: 20px !important;
+    right: 55px !important;
+    padding: 12px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    font-size: 16px !important;
+  }
+
+  .lb-share svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .lb-close {
+    right: 15px !important;
+    top: 20px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+}
+
   @media (max-width:900px) {
     .gallery {
       grid-template-columns: repeat(2, 1fr);
