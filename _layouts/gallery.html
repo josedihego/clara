@@ -4,7 +4,7 @@ layout: default
 
 {% assign album = site.data.gallery.albums | where: "name", page.title | first %}
 
-{% if album %}
+{% if album and page.subalbum == nil %}
 <!-- <h2>Subalbums in {{ album.name }}</h2>-->
 <div class="gallery">
   {% for sub in album.subalbums %}
@@ -16,9 +16,7 @@ layout: default
                | append: sub_album
                | append: '/' 
               | append: sub_slug 
-              | relative_url }}" data-lightbox="{{ group }}" 
-              class="{% if current contains sub_slug %}active{% endif %}"
-              data-title="{{ sub.name | escape }}">
+              | relative_url }}" data-lightbox="{{ group }}" class="album-card" data-title="{{ sub.name | escape }}">
     <img img src="{{ img_url }}" alt="{{ album.name | escape }}" loading="lazy">
     <h3>{{ sub.name | escape }}</h3>
   </a>
@@ -29,7 +27,7 @@ layout: default
 
 {% assign subalbum = album.subalbums | where: "name", page.subalbum | first %}
 
-{% if subalbum %}
+{% if album and page.subalbum %}
 
 {% assign group = album.name | slugify | append: '-' | append: subalbum.name | slugify %}
 
