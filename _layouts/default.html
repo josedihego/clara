@@ -248,6 +248,76 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css">
 <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
 
+
+<script>
+(function () {
+  // create button only once and attach handler that reads current .lb-image.src when clicked
+  function createShareButtonIfNeeded() {
+    if (document.querySelector('.lb-share')) return true;
+    var lbClose = document.querySelector('.lb-close');
+    if (!lbClose) return false;
+
+    var shareBtn = document.createElement('a');
+    shareBtn.href = '#';
+    shareBtn.className = 'lb-share';
+    shareBtn.title = 'Share this image';
+   shareBtn.innerHTML = `
+  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+    <polyline points="16,6 12,2 8,6"/>
+    <line x1="12" y1="2" x2="12" y2="15"/>
+  </svg>`; // simple icon — replace with SVG if you prefer
+
+    shareBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var img = document.querySelector('.lb-image');
+      if (!img) return alert('Image not ready yet');
+      var imgUrl = img.src;
+      var imgAlt = img.getAttribute('alt') || document.title;
+
+      if (navigator.share) {
+        navigator.share({
+          title: imgAlt,
+          text: imgAlt,
+          url: imgUrl
+        }).catch(function(){ /* share cancelled */ });
+      } else {
+        // fallback to WhatsApp Web on desktop
+        window.open('https://wa.me/?text=' + encodeURIComponent(imgAlt + ' ' + imgUrl), '_blank');
+      }
+    });
+
+    // insert before the close button (so it appears left of the X)
+    lbClose.parentNode.insertBefore(shareBtn, lbClose);
+    return true;
+  }
+
+  // When a lightbox link is clicked, poll a bit for Lightbox DOM and insert button
+  document.addEventListener('click', function (e) {
+    var target = e.target.closest('a[data-lightbox]');
+    if (!target) return;
+
+    // remove any existing share button (we'll recreate for new overlay)
+    var old = document.querySelector('.lb-share');
+    if (old) old.remove();
+
+    var attempts = 0;
+    var iv = setInterval(function () {
+      if (createShareButtonIfNeeded() || attempts++ > 30) {
+        clearInterval(iv);
+      }
+    }, 100);
+  }, true);
+
+  // also watch for DOM changes (covers next/prev navigation inside Lightbox)
+  var mo = new MutationObserver(function () {
+    // try to insert if not present
+    createShareButtonIfNeeded();
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
 <body>
   <header>
     <h1><a href="{{ '/' | relative_url }}">The Clara's Art Exposition</a></h1>
@@ -291,7 +361,7 @@
   <a href="https://wa.me/?text={{ page.url | absolute_url | uri_escape }}" 
      target="_blank" class="share-btn whatsapp">
     <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="Share on WhatsApp">
-    Share on WhatsApp
+    Share
   </a>
 </div>
 
