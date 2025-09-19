@@ -10,17 +10,14 @@ layout: default
   {% for sub in album.subalbums %}
   {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
   {% assign sub_album = album.name | downcase | replace: ' ', '-' %}
+  {% assign img_url = '/assets/drawings/' | append: subalbum.images[0].file | relative_url %}
   <li>
     <a href="{{ '/albums/' 
                | append: sub_album
                | append: '/' 
               | append: sub_slug 
               | relative_url }}" class="album-card">
-              <img src="{{ '/albums/' 
-               | append: sub_album
-               | append: '/' 
-              | append: sub_slug 
-              | relative_url }}" alt="{{ sub.name }}">
+              <img img src="{{ img_url }}" alt="{{ img.title | escape }}" loading="lazy">
     </a>
   </li>
   {% endfor %}
