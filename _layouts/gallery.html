@@ -6,24 +6,22 @@ layout: default
 
 {% if album %}
 <h2>Subalbums in {{ album.name }}</h2>
-<ul>
 <div class="gallery">
   {% for sub in album.subalbums %}
   {% assign sub_slug = sub.name | downcase | replace: ' ', '-' %}
   {% assign sub_album = album.name | downcase | replace: ' ', '-' %}
   {% assign img_url = '/assets/drawings/' | append: sub.images[0].file | relative_url %}
-  
-    <a href="{{ '/albums/' 
+
+  <a href="{{ '/albums/' 
                | append: sub_album
                | append: '/' 
               | append: sub_slug 
               | relative_url }}" data-lightbox="{{ group }}" class="album-card">
-              <img img src="{{ img_url }}" alt="{{ img.title | escape }}" loading="lazy">
-    </a>
+    <img img src="{{ img_url }}" alt="{{ sub.images[0].title | escape }}" loading="lazy">
+  </a>
 
   {% endfor %}
-</ul>
-{% endif %}
+  {% endif %}
 </div>
 
 
