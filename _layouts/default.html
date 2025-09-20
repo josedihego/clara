@@ -237,67 +237,70 @@
   filter: invert(1);
 }
 
-/* Add this to your layout file's <style> section */
+/* Smaller and more transparent share button */
 
 .lb-share {
   position: absolute !important;
   top: 10px !important;
-  right: 55px !important;
-  background: rgba(255, 255, 255, 0.3) !important; /* Transparent white */
-  border: 2px solid rgba(255, 255, 255, 0.6) !important; /* White border */
+  right: 50px !important; /* Moved closer to close button */
+  background: rgba(255, 255, 255, 0.15) !important; /* More transparent (15% opacity) */
+  border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Thinner border */
   border-radius: 50% !important;
-  padding: 12px !important;
+  padding: 8px !important; /* Smaller padding */
   cursor: pointer !important;
   z-index: 9999 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  min-width: 48px !important;
-  min-height: 48px !important;
+  min-width: 36px !important; /* Smaller size */
+  min-height: 36px !important;
   text-decoration: none !important;
   color: white !important;
   transition: all 0.2s ease !important;
 }
 
 .lb-share:hover {
-  background: rgba(255, 255, 255, 0.5) !important; /* More opaque white on hover */
-  border-color: rgba(255, 255, 255, 0.8) !important;
-  transform: scale(1.05) !important;
+  background: rgba(255, 255, 255, 0.25) !important; /* Still subtle on hover */
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: scale(1.1) !important;
 }
 
 .lb-share svg {
   pointer-events: none !important;
   display: block !important;
-  stroke: white !important; /* Ensure icon is white */
+  stroke: white !important;
+  width: 16px !important; /* Smaller icon */
+  height: 16px !important;
+  stroke-width: 2.5 !important; /* Slightly thicker lines for visibility */
 }
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .lb-share {
     top: 15px !important;
-    right: 60px !important;
-    padding: 10px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    background: rgba(255, 255, 255, 0.4) !important; /* Slightly more opaque on mobile */
+    right: 55px !important;
+    padding: 6px !important; /* Even smaller on mobile */
+    min-width: 32px !important;
+    min-height: 32px !important;
+    background: rgba(255, 255, 255, 0.2) !important; /* Slightly more visible on mobile */
     touch-action: manipulation !important;
     -webkit-tap-highlight-color: transparent !important;
   }
 
   .lb-share svg {
-    width: 20px !important;
-    height: 20px !important;
+    width: 14px !important;
+    height: 14px !important;
   }
 }
 
 @media (max-width: 480px) {
   .lb-share {
     top: 20px !important;
-    right: 65px !important;
-    padding: 12px !important;
-    min-width: 48px !important;
-    min-height: 48px !important;
-    background: rgba(255, 255, 255, 0.5) !important; /* Even more visible on small screens */
+    right: 55px !important;
+    padding: 7px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+    background: rgba(255, 255, 255, 0.25) !important; /* More visible on small screens */
   }
 }
 
